@@ -1,0 +1,65 @@
+commands
+  tree "You see a circle of trees."
+  pit "You see a dark bottomless pit."
+  light "You see an endless white light."
+  box "You see an ominous box with a smaller glitter inside."
+  treasure "You find a pile of sparkling treasure!"
+  fall "You try to move past the pit, but slip and fall into oblivion."
+  reset "Type 'reincarnate' for a new life."
+end
+
+events
+  moveNorth north
+  moveSouth south
+  moveEast east
+  moveWest west
+  openBox open
+  reincarnate reincarnate
+end
+
+state idle
+  action light
+  transitions
+    moveNorth => treeState
+    moveSouth => pitState
+  .
+end
+
+state treeState
+  action tree
+  transitions
+    moveSouth => idle
+  .
+end
+
+state pitState
+  action pit
+  transitions
+    moveNorth => idle
+    moveSouth => fallState
+    moveEast => boxState
+  .
+end
+
+state boxState
+  action box
+  transitions
+    moveWest => pitState
+    openBox => treasureState
+  .
+end
+
+state treasureState
+  action treasure
+  transitions
+    moveWest => pitState
+  .
+end
+
+state fallState
+  action fall
+  transitions
+    reincarnate => idle
+  .
+  action reset
+end

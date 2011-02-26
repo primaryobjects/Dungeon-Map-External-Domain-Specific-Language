@@ -1,0 +1,23 @@
+commands
+  sayHello "Hello World"
+  sayGoodbye "Goodbye world"
+end
+
+events
+  sayHi hi
+  sayBye bye
+end
+
+state idle
+  action sayHello
+  transitions
+     sayBye => byeState
+  .
+end
+
+state byeState
+  action sayGoodbye
+  transitions
+     sayHi => idle
+  .
+end

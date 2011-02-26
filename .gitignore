@@ -1,0 +1,10 @@
+*.cache
+*.dll
+*.pdb
+*.txt
+*.suo
+!README.txt
+!dungeon.txt
+!helloworld.txt
+!ExternalDSL.DSLParser.dll
+!ExternalDSL.StateMachine.dll
